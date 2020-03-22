@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Filme</title>
+        <h:outputStylesheet library="css" name="styles.css" />
+    </h:head>
+    <h:body>
+        <h1>Avalie um filme</h1>
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:outputLabel value="Seu nome: " for="nome"/>
+                <h:inputText value="#{filmeBean.filme.avaliador}" id="nome" required="true" label="nome"/>
+                <h:message for="nome" styleClass="erro"/>
+                <h:outputLabel value="Filme:" for="filme" />
+                <h:selectOneMenu value="#{filmeBean.filme.titulo}" required="true" id="filme" label="filme">
+                    <f:selectItems value="#{filmeBean.listaDeFilmes}" />
+                </h:selectOneMenu>
+                <h:message for="filme" styleClass="erro"/>
+                <h:outputLabel value="Roteiro:" for="roteiro"/>
+                <h:selectOneRadio value="#{filmeBean.filme.roteiro}" 
+                                  id="roteiro" required="true" label="roteiro">
+                    <f:selectItems value="#{filmeBean.listaDeAvaliacoes}"/>
+                </h:selectOneRadio>
+                <h:message for="roteiro" styleClass="erro"/>
+                <h:outputLabel value="Trilha sonora:" for="trilha"/>
+                <h:selectOneRadio value="#{filmeBean.filme.trilha}" 
+                                  id="trilha" required="true" label="trilha sonora">
+                    <f:selectItems value="#{filmeBean.listaDeAvaliacoes}"/>
+                </h:selectOneRadio>
+                <h:message for="trilha" styleClass="erro"/>
+                <h:outputLabel value="Interpretação:" for="interpretacao"/>
+                <h:selectOneRadio value="#{filmeBean.filme.interpretacao}" 
+                                  id="interpretacao" required="true" label="interpretação">
+                    <f:selectItems value="#{filmeBean.listaDeAvaliacoes}"/>
+                </h:selectOneRadio>
+                <h:message for="interpretacao" styleClass="erro"/>
+                <h:outputLabel value="Recomendo: " for="recomendo"/>
+                <h:selectBooleanCheckbox value="#{filmeBean.filme.recomendo}" id="recomendo"/>
+            </h:panelGrid>
+            <h:commandButton value="Avaliar" action="#{filmeBean.calcularNota}"/>
+        </h:form>
+    </h:body>
+</html>
+
