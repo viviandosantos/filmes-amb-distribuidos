@@ -14,7 +14,9 @@
             Filme:
             <h:outputText value="#{filmeBean.filme.titulo}"/>
             Nota:
-            <h:outputText value="#{filmeBean.filme.nota}"/>
+            <h:outputText value="#{filmeBean.filme.nota}">
+            	<f:convertNumber minFractionDigits = "2" maxFractionDigits = "2"/>
+            </h:outputText>
             Recomenda:
             <h:outputText value="#{filmeBean.filme.recomendo ? 'Sim' : 'Não'}"/>
         </h:panelGrid>
